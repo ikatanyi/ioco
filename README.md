@@ -43,10 +43,11 @@ they own.
     *
     
 ## Important Links
-    * For api documentation I am using swagger-Open Document Api which can be accessed from below Link
-      Swagger : http://localhost:8080/swagger-ui/index.html
+   For api documentation I am using swagger-Open Document Api which can be accessed from below Link
+      
+   *Swagger : http://localhost:8080/swagger-ui/index.html
 
-      some of the links are:
+    some of the links are:
        1. POST /survivor  - Add a new survivor to the database
         {
           "name": "John Watt",
