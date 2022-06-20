@@ -141,6 +141,12 @@ password :password
 ```
     java -jar dir-path\apocalypse\target\apocalypse-0.0.1-SNAPSHOT.jar
 ```
+## OTHER
+  1. *The project contains a docker file for running the application in a docker container*
+
+  2. *The project has a kubernetes service setup for deploying the application in a kubernetes cluster*
+  
+  3. *The project contains a README.md file for the purpose of documentation*
 
 ## Licence
 
