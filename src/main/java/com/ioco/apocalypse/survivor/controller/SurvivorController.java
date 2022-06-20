@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
@@ -49,6 +50,13 @@ public class SurvivorController {
 
         InfectionReporterDto savedSurvivorDto = survivorService.reportInfection(id, infectionReporterDto).toInfectionReporterDto();
         return ResponseEntity.status(HttpStatus.CREATED).body(savedSurvivorDto);
+    }
+
+    @GetMapping("/{survivorId}/infection-reporters")
+    public ResponseEntity<?> findInfectionReporters(@PathVariable(value = "survivorId") Long survivorId) {
+
+        List<InfectionReporterDto> reporters = survivorService.findInfectionReporter(survivorId).stream().map(InfectionReporter::toInfectionReporterDto).collect(Collectors.toList());
+        return ResponseEntity.status(HttpStatus.CREATED).body(reporters);
     }
 
     @GetMapping("/infection-stats")

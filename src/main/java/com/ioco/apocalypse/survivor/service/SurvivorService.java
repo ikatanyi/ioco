@@ -56,6 +56,7 @@ public class SurvivorService {
     public InfectionReporter reportInfection(Long survivorId, InfectionReporterDto infectionReporterDto) {
         Survivor infectedSurvivor = this.findById(survivorId);
         Survivor infectionReporter = this.findById(infectionReporterDto.getInfectionReporterId());
+
         InfectionReporter reporter = infectionReporterDto.toInfectionReporter();
         reporter.setInfectionReporter(infectionReporter);
 
@@ -66,6 +67,11 @@ public class SurvivorService {
             infectedSurvivor.setInfectionStatus(InfectionStatus.INFECTED);
         }
         return infectionReporterRepository.save(reporter);
+    }
+
+    public List<InfectionReporter> findInfectionReporter(Long survivorId) {
+        Survivor infectedSurvivor = this.findById(survivorId);
+        return infectionReporterRepository.findByInfectedSurvivor(infectedSurvivor);
     }
 
     public SurvivorInterface findInfectionStats(InfectionStatus status){

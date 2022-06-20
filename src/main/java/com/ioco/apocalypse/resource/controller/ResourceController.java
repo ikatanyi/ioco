@@ -65,6 +65,7 @@ public class ResourceController {
             @RequestParam(value = "description", required = false) final String description,
             @RequestParam(value = "page", defaultValue = "0",required = false) Integer page,
             @RequestParam(value = "pageSize", defaultValue = "20",required = false) Integer size) {
+        page = page>=1 ? page-1 : page;
         Pageable pageable = PageRequest.of(page, size);
 
         Page<ResourceDto> pagedList = service.fetchResources(resourceType, description, pageable).map(u -> u.toResourceDto());

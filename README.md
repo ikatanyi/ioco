@@ -91,11 +91,13 @@ they own.
   "infection_reporter_id": 0
 }
 ```
-8.```GET /api/resource``` -This is to fetch All resources registered It contains filters like resourceType[MEDICATION, AMMUNITION,MEDICAL, OTHER], description,and pagination details**
+9.```GET /survivor/{id}/infection-reporters``` -This is to fetch the list of infection reporters of a survivor**
 
-9.```GET /api/resource/{id}``` -This is to fetch details of a resource with id**
+10.```GET /api/resource``` -This is to fetch All resources registered It contains filters like resourceType[MEDICATION, AMMUNITION,MEDICAL, OTHER], description,and pagination details**
 
-10.```POST /api/resource``` -This is to add a new resource for a survivor**
+11.```GET /api/resource/{id}``` -This is to fetch details of a resource with id**
+
+12.```POST /api/resource``` -This is to add a new resource for a survivor**
 ```json
         {
           "survivor_id": 0,
@@ -103,7 +105,7 @@ they own.
           "description": "2L"
         }
 ```
-11. ```GET /api/robot``` -This is to Fetch all robots in a readble json format as below**
+13.```GET /api/robot``` -This is to Fetch all robots in a readble json format as below**
 ```json
 [
   {

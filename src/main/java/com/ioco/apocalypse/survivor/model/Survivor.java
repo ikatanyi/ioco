@@ -65,7 +65,7 @@ public class Survivor implements Serializable {
     }
 
     public void addReport(InfectionReporter reporter) {
-        reporter.setInfectionReporter(this);
+        reporter.setInfectedSurvivor(this);
         this.reporters.add(reporter);
     }
 
