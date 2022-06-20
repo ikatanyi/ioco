@@ -45,7 +45,7 @@ they own.
 ## Important Links
    For api documentation I am using swagger-Open Document Api which can be accessed from below Link
       
-   *Swagger : http://localhost:8080/swagger-ui/index.html
+   Swagger : http://localhost:8080/swagger-ui/index.html
 
     some of the links are:
      **  1. POST /survivor  - Add a new survivor to the database**
@@ -76,8 +76,14 @@ they own.
      ** 4. GET /survivor/list -This is to fetch the list of all survivors**
      ** 5. PUT /survivor/{id} -This is to update details of a survivor**
      ** 6. PUT /survivor/{id}/last-location -This is to update last location of a  survivor**
+	 ** 7. POST /survivor/{id}/infection-reporter -This is report an infected survivor the id represents the infected survivor id and below request body carries reporter details**
+	       **Request**
+		   ```json
+		   
+		   ```	   
+	 
    
-   *Storage
+    **Storage**
     * For Storage I am using H2- databasewhich is an in-memory database and saving to file for persistence
       H2 DB UI: http://localhost:8080/h2-console
          *jdbcUrl:jdbc:h2:file:/data/apocalypsedb

@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apocalypse
+  labels:
+    app: apocalypse
+spec:
+  selector:
+    matchLabels:
+      app: apocalypse
+  template:
+    metadata:
+      labels:
+        app: apocalypse
+    spec:
+      containers:
+        - name: apocalypse
+          image: ikatanyi/apocalypse
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
