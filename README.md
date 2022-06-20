@@ -82,8 +82,15 @@ they own.
 
 6.```PUT /survivor/{id}/last-location``` -This is to update last location of a  survivor**
 
-7.```POST /survivor/{id}/infection-reporter``` -This is report an infected survivor the id represents the infected survivor id and below request body carries reporter details**
+7.```POST /survivor/{id}/infection-reporter``` -*This is report an infected survivor the id represents the infected survivor id and below request body carries reporter details*
 
+**Request:**
+```json
+{
+  "reported_date": "2022-06-20",
+  "infection_reporter_id": 0
+}
+```
 8.```GET /api/resource``` -This is to fetch All resources registered It contains filters like resourceType[MEDICATION, AMMUNITION,MEDICAL, OTHER], description,and pagination details**
 
 9.```GET /api/resource/{id}``` -This is to fetch details of a resource with id**
@@ -113,13 +120,7 @@ they own.
   }...]
 ```
 
-**Request:**
-```json
-{
-  "reported_date": "2022-06-20",
-  "infection_reporter_id": 0
-}
-```
+
    
 **Storage**
 
