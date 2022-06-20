@@ -84,6 +84,35 @@ they own.
 
 7.```POST /survivor/{id}/infection-reporter``` -This is report an infected survivor the id represents the infected survivor id and below request body carries reporter details**
 
+8.```GET /api/resource``` -This is to fetch All resources registered It contains filters like resourceType[MEDICATION, AMMUNITION,MEDICAL, OTHER], description,and pagination details**
+
+9.```GET /api/resource/{id}``` -This is to fetch details of a resource with id**
+
+10.```POST /api/resource``` -This is to add a new resource for a survivor**
+```json
+        {
+          "survivor_id": 0,
+          "resource_type": "WATER",
+          "description": "2L"
+        }
+```
+11. ```GET /api/robot``` -This is to Fetch all robots in a readble json format as below**
+```json
+[
+  {
+    "model": "02U3L",
+    "serialNumber": "OAN98YIG3K6ALFW",
+    "manufacturedDate": "2022-07-27T15:21:55.1883188+00:00",
+    "category": "Land"
+  },
+  {
+    "model": "129VZ",
+    "serialNumber": "HPUEUCPYXIJON7N",
+    "manufacturedDate": "2022-07-12T15:21:55.188297+00:00",
+    "category": "Land"
+  }...]
+```
+
 **Request:**
 ```json
 {
