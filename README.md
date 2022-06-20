@@ -39,8 +39,6 @@ they own.
     * Springboot V2.5
     * H2 Database
 
-## Assumptions
-    *
     
 ## Important Links
    For api documentation I am using swagger-Open Document Api which can be accessed from below Link
@@ -76,13 +74,13 @@ they own.
 	    
 3.```GET /survivor/infection/list``` -This is to fetch the list of infected/Non-Infected survivors it takes a parameter of either **INFECTED/NON-INFECTED**
 
-4.```GET /survivor/list``` -This is to fetch the list of all survivors**
+4.```GET /survivor/list``` -This is to fetch the list of all survivors
 
-5.```PUT /survivor/{id}``` -This is to update details of a survivor**
+5.```PUT /survivor/{id}``` -This is to update details of a survivor
 
-6.```PUT /survivor/{id}/last-location``` -This is to update last location of a  survivor**
+6.```PUT /survivor/{id}/last-location``` -This is to update last location of a  survivor
 
-7.```POST /survivor/{id}/infection-reporter``` -*This is report an infected survivor the id represents the infected survivor id and below request body carries reporter details*
+7.```POST /survivor/{id}/infection-reporter``` -This is to report an infected survivor the id represents the infected survivor id and below request body carries reporter details
 
 **Request:**
 ```json
@@ -91,9 +89,9 @@ they own.
   "infection_reporter_id": 0
 }
 ```
-9.```GET /survivor/{id}/infection-reporters``` -This is to fetch the list of infection reporters of a survivor**
+9.```GET /survivor/{id}/infection-reporters``` -This is to fetch the list of infection reporters of a survivor
 
-10.```GET /api/resource``` -This is to fetch All resources registered It contains filters like resourceType[MEDICATION, AMMUNITION,MEDICAL, OTHER], description,and pagination details**
+10.```GET /api/resource``` -This is to fetch All resources registered It contains filters like resourceType[MEDICATION, AMMUNITION,MEDICAL, OTHER], description,and pagination details
 
 11.```GET /api/resource/{id}``` -This is to fetch details of a resource with id**
 
@@ -136,6 +134,9 @@ password :password
 ```
     
 ## Build
+Download or clone the project from the link below:
+https://github.com/ikatanyi/ioco.git
+
     mvn clean build
 
 ## Run
