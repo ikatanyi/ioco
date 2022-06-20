@@ -48,7 +48,8 @@ they own.
    Swagger : http://localhost:8080/swagger-ui/index.html
 
     some of the links are:
-     **  1. POST /survivor  - Add a new survivor to the database**
+    1.Add a new survivor to the database
+	  **POST /survivor**
 	 ```json
         {
           "name": "John Watt",
@@ -71,30 +72,46 @@ they own.
         }
 	```	
 
-     ** 2. GET /survivor/{id} -This is to fetch the details of a survivor**
-     ** 3. GET /survivor/infection/list -This is to fetch the list of infected/Non-Infected survivors it takes a parameter of either **INFECTED/NON-INFECTED**
-     ** 4. GET /survivor/list -This is to fetch the list of all survivors**
-     ** 5. PUT /survivor/{id} -This is to update details of a survivor**
-     ** 6. PUT /survivor/{id}/last-location -This is to update last location of a  survivor**
-	 ** 7. POST /survivor/{id}/infection-reporter -This is report an infected survivor the id represents the infected survivor id and below request body carries reporter details**
-	       **Request**
-		   ```json
-		   
-		   ```	   
-	 
+2.```GET /survivor/{id}``` -This is to fetch the details of a survivor
+	    
+3.```GET /survivor/infection/list``` -This is to fetch the list of infected/Non-Infected survivors it takes a parameter of either **INFECTED/NON-INFECTED**
+
+4.```GET /survivor/list``` -This is to fetch the list of all survivors**
+
+5.```PUT /survivor/{id}``` -This is to update details of a survivor**
+
+6.```PUT /survivor/{id}/last-location``` -This is to update last location of a  survivor**
+
+7.```POST /survivor/{id}/infection-reporter``` -This is report an infected survivor the id represents the infected survivor id and below request body carries reporter details**
+
+**Request:**
+```json
+{
+  "reported_date": "2022-06-20",
+  "infection_reporter_id": 0
+}
+```
    
-    **Storage**
-    * For Storage I am using H2- databasewhich is an in-memory database and saving to file for persistence
-      H2 DB UI: http://localhost:8080/h2-console
-         *jdbcUrl:jdbc:h2:file:/data/apocalypsedb
-         *username :sa
-         *password :password
+**Storage**
+
+For Storage I am using H2- databasewhich is an in-memory database and saving to file for persistence
+
+H2 DB UI: http://localhost:8080/h2-console   
+```
+jdbcUrl:jdbc:h2:file:/data/apocalypsedb
+username :sa
+password :password
+```
     
 ## Build
     mvn clean build
 
 ## Run
     mvn spring-boot:run
+ *Run packaged jar*
+```
+    java -jar dir-path\apocalypse\target\apocalypse-0.0.1-SNAPSHOT.jar
+```
 
 ## Licence
 
