@@ -15,6 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -43,6 +45,12 @@ public class ResourceController {
         return ResponseEntity.ok(dto);
     }
 
+    @GetMapping("/survivor/{survivorId}")
+    public ResponseEntity<?> getResourceBySurvivor(@PathVariable(value = "survivorId") Long survivorId) {
+        List<ResourceDto> resources = service.fetchSurvivorResources(survivorId).stream().map(Resource::toResourceDto).collect(Collectors.toList());
+        return ResponseEntity.ok(resources);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<?> updateResource(@PathVariable(value = "id") Long id, @Valid @RequestBody ResourceDto resourceDto) {
 
@@ -62,13 +70,14 @@ public class ResourceController {
     @GetMapping
     public ResponseEntity<?> getAllResources(
             @RequestParam(value = "resourceType", required = false) final ResourceType resourceType,
+            @RequestParam(value = "survivorId", required = false) final Long survivorId,
             @RequestParam(value = "description", required = false) final String description,
             @RequestParam(value = "page", defaultValue = "0",required = false) Integer page,
             @RequestParam(value = "pageSize", defaultValue = "20",required = false) Integer size) {
         page = page>=1 ? page-1 : page;
         Pageable pageable = PageRequest.of(page, size);
 
-        Page<ResourceDto> pagedList = service.fetchResources(resourceType, description, pageable).map(u -> u.toResourceDto());
+        Page<ResourceDto> pagedList = service.fetchResources(survivorId, resourceType, description, pageable).map(u -> u.toResourceDto());
         return ResponseEntity.ok(pagedList);
     }
 

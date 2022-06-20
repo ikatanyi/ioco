@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  *
@@ -57,11 +58,17 @@ public class ResourceService {
         return true;
     }
 
-    public Page<Resource> fetchResources(ResourceType resourceType, String description,  Pageable pageable) {
-        Specification<Resource> spec = ResourceSpecification.createSpecification(resourceType, description);
+    public Page<Resource> fetchResources(Long survivorId, ResourceType resourceType, String description,  Pageable pageable) {
+        Specification<Resource> spec = ResourceSpecification.createSpecification(survivorId, resourceType, description);
         Page<Resource> items = resourceRepository.findAll(spec, pageable);
         return items;
     }
+
+    public List<Resource> fetchSurvivorResources(Long survivorId) {
+        fetchResourceOrThrow(survivorId);
+        return resourceRepository.findBySurvivor_id(survivorId);
+    }
+
 
     public Resource fetchResourceOrThrow(Long id) {
         return this.resourceRepository.findById(id)

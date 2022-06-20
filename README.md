@@ -81,6 +81,12 @@ they own.
 5.```PUT /survivor/{id}``` -This is to update details of a survivor
 
 6.```PUT /survivor/{id}/last-location``` -This is to update last location of a  survivor
+```json
+{
+  "longitude": "string",
+  "latitude": "string"
+}
+```
 
 7.```POST /survivor/{id}/infection-reporter``` -This is to report an infected survivor the id represents the infected survivor id and below request body carries reporter details
 
@@ -93,11 +99,11 @@ they own.
 ```
 9.```GET /survivor/{id}/infection-reporters``` -This is to fetch the list of infection reporters of a survivor
 
-10.```GET /api/resource``` -This is to fetch All resources registered It contains filters like resourceType[MEDICATION, AMMUNITION,MEDICAL, OTHER], description,and pagination details
+10.```GET /api/resource``` -This is to fetch All resources registered It contains filters like survivorId, resourceType[MEDICATION, AMMUNITION,MEDICAL, OTHER], description,and pagination details
 
-11.```GET /api/resource/{id}``` -This is to fetch details of a resource with id**
+11.```GET /api/resource/{id}``` -This is to fetch details of a resource with id
 
-12.```POST /api/resource``` -This is to add a new resource for a survivor**
+12.```POST /api/resource``` -This is to add a new resource for a survivor
 ```json
         {
           "survivor_id": 0,
@@ -105,7 +111,8 @@ they own.
           "description": "2L"
         }
 ```
-13.```GET /api/robot``` -This is to Fetch all robots in a readble json format as below**
+13. ```GET /api/resource/survivor/{survivorId}``` -This is to fetch all resources of a survivor with id
+13.```GET /api/robot``` -This is to Fetch all robots in a readable json format as below
 ```json
 [
   {
@@ -133,6 +140,12 @@ H2 DB UI: http://localhost:8080/h2-console
 jdbcUrl:jdbc:h2:file:/data/apocalypsedb
 username :sa
 password :password
+```
+
+## Assumptions
+1.**Survivor Object is not overloaded with resources, during fetching of survivor but this can be changed by uncommenting the below line in toSurvivorDto method in Survivor Entity**
+```
+survivorDto.setResources(this.resource.stream().map(Resource::toResourceDto).collect(Collectors.toList()));
 ```
     
 ## Build

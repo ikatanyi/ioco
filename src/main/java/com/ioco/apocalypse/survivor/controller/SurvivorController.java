@@ -1,6 +1,7 @@
 package com.ioco.apocalypse.survivor.controller;
 
 import com.ioco.apocalypse.survivor.data.InfectionReporterDto;
+import com.ioco.apocalypse.survivor.data.LocationDto;
 import com.ioco.apocalypse.survivor.data.SurvivorDto;
 import com.ioco.apocalypse.survivor.model.InfectionReporter;
 import com.ioco.apocalypse.survivor.model.Survivor;
@@ -30,19 +31,17 @@ public class SurvivorController {
 
     @GetMapping
     public ResponseEntity<?> findAllSurvivors() {
-        return ResponseEntity.ok(survivorService.findAll());
+        return ResponseEntity.ok(survivorService.findAll().stream().map(Survivor::toSurvivorDto).collect(Collectors.toList()));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateSurvivor(@PathVariable(value = "id") Long id, @Valid @RequestBody SurvivorDto survivorDto) {
-        return ResponseEntity.ok(survivorService.update(id, survivorDto));
+        return ResponseEntity.ok(survivorService.update(id, survivorDto).toSurvivorDto());
     }
 
     @PutMapping("/{id}/last-location")
-    public ResponseEntity<?> updateSurvivorLastLocation(@PathVariable(value = "id") Long id,
-                                                        @RequestParam(value = "latitude", required = true) String latitude,
-                                                        @RequestParam(value = "longitude", required = true) String longitude) {
-        return ResponseEntity.status(HttpStatus.OK).body(survivorService.updateLocation(id, latitude, longitude));
+    public ResponseEntity<?> updateSurvivorLastLocation(@PathVariable(value = "id") Long id, @Valid @RequestBody LocationDto locationDto)  {
+        return ResponseEntity.status(HttpStatus.OK).body(survivorService.updateLocation(id, locationDto).toSurvivorDto());
     }
 
     @PostMapping("/{id}/infection-reporter")

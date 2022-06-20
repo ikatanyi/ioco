@@ -42,7 +42,7 @@ public class Survivor implements Serializable {
     @Enumerated(EnumType.STRING)
     private InfectionStatus infectionStatus=InfectionStatus.NOT_INFECTED;
 
-    @OneToMany(mappedBy = "survivor", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "survivor", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Resource>resource = new ArrayList<>();
 
     @JsonIgnore
@@ -79,7 +79,9 @@ public class Survivor implements Serializable {
         survivorDto.setLongitude(this.getLongitude());
         survivorDto.setInfectionStatus(this.infectionStatus);
         survivorDto.setInfectionReportCount(this.reporters.size());
-        survivorDto.setResources(this.resource.stream().map(Resource::toResourceDto).collect(Collectors.toList()));
+
+        //UNCOMMENT THIS LINE TO GET THE RESOURCES IN THE SURVIVOR
+//        survivorDto.setResources(this.resource.stream().map(Resource::toResourceDto).collect(Collectors.toList()));
         return survivorDto;
     }
 }

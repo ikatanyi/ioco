@@ -18,9 +18,13 @@ public class ResourceSpecification {
         super();
     }
 
-    public static Specification<Resource> createSpecification(ResourceType resourceType, String description) {
+    public static Specification<Resource> createSpecification(Long survivorId, ResourceType resourceType, String description) {
         return (root, query, cb) -> {
             final ArrayList<Predicate> predicates = new ArrayList<>();
+
+            if(survivorId!=null) {
+                predicates.add(cb.equal(root.get("survivor").get("id"), survivorId));
+            }
 
             if (resourceType!=null) {
                 predicates.add(cb.equal(root.get("resourceType"), resourceType ));

@@ -2,6 +2,7 @@ package com.ioco.apocalypse.survivor.service;
 
 import com.ioco.apocalypse.exception.APIException;
 import com.ioco.apocalypse.survivor.data.InfectionReporterDto;
+import com.ioco.apocalypse.survivor.data.LocationDto;
 import com.ioco.apocalypse.survivor.data.SurvivorDto;
 import com.ioco.apocalypse.survivor.model.InfectionReporter;
 import com.ioco.apocalypse.survivor.model.Survivor;
@@ -45,11 +46,10 @@ public class SurvivorService {
         return survivorRepository.save(survivor);
     }
 
-    public Survivor updateLocation(Long id, String latitude, String longitude) {
-        LocalDate now = LocalDate.now();
+    public Survivor updateLocation(Long id, LocationDto locationDto) {
         Survivor survivor = survivorRepository.findById(id).orElseThrow(() -> APIException.notFound("Survivor identified by id {0} not found", id));
-        survivor.setLatitude(latitude);
-        survivor.setLongitude(longitude);
+        survivor.setLatitude(locationDto.getLatitude());
+        survivor.setLongitude(locationDto.getLongitude());
         return survivorRepository.save(survivor);
     }
 
