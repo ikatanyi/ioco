@@ -48,7 +48,8 @@ they own.
    *Swagger : http://localhost:8080/swagger-ui/index.html
 
     some of the links are:
-       1. POST /survivor  - Add a new survivor to the database
+     **  1. POST /survivor  - Add a new survivor to the database**
+	 ```json
         {
           "name": "John Watt",
           "age": 20,
@@ -68,14 +69,15 @@ they own.
             }
           ]
         }
+	```	
 
-        2. GET /survivor/{id} -This is to fetch the details of a survivor
-        3. GET /survivor/infection/list -This is to fetch the list of infected/Non-Infected survivors it takes a parameter of either **INFECTED/NON-INFECTED**
-        4. GET /survivor/list -This is to fetch the list of all survivors
-        5. PUT /survivor/{id} -This is to update details of a survivor
-        6. PUT /survivor/{id}/last-location -This is to update last location of a  survivor
-
-    
+     ** 2. GET /survivor/{id} -This is to fetch the details of a survivor**
+     ** 3. GET /survivor/infection/list -This is to fetch the list of infected/Non-Infected survivors it takes a parameter of either **INFECTED/NON-INFECTED**
+     ** 4. GET /survivor/list -This is to fetch the list of all survivors**
+     ** 5. PUT /survivor/{id} -This is to update details of a survivor**
+     ** 6. PUT /survivor/{id}/last-location -This is to update last location of a  survivor**
+   
+   *Storage
     * For Storage I am using H2- databasewhich is an in-memory database and saving to file for persistence
       H2 DB UI: http://localhost:8080/h2-console
          *jdbcUrl:jdbc:h2:file:/data/apocalypsedb
