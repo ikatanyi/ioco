@@ -45,6 +45,8 @@ they own.
       
    Swagger : http://localhost:8080/swagger-ui/index.html
 
+   Some of the API links are described below:
+
     some of the links are:
     1.Add a new survivor to the database
 	  **POST /survivor**
